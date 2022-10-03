@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { List } from './components/List';
+import { Empty } from './components/Empty';
+import { Product } from './models/product';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export function App() {
+
+  const products: Product[] | null = [
+    { id: '1', name: 'Mela' },
+    { id: '2', name: 'Pera' },
+    { id: '3', name: 'Banana' },
+  ];
+
+  function buttonHandler(e: React.PointerEvent<HTMLButtonElement>) {
+    console.log('Cliccato!', e.currentTarget.value);
+  }
+
+  function inputHandler(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      console.log('Inviato: ', e.currentTarget.value);
+    }
+  }
+
+  return <>
+      <div>{
+        products.length > 0
+            ? <List products={products} />
+            : <Empty />
+      }</div>
+
+      <button value={3} onClick={buttonHandler}>Cliccami!</button>
+      <input type="text" onKeyDown={inputHandler} />
+  </>
 }
-
-export default App;
