@@ -1,8 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function Counter() {
 
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log('Componente montato');
+
+    return () => {
+      console.log('Componente smontato')
+    }
+  }, [])
 
   function inc() {
     setCount(n => n + 1);

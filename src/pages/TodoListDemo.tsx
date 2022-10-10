@@ -56,14 +56,14 @@ export function TodoListDemo() {
 
   return (
       <div className="p-4">
+        <TodoVisibility
+            filter={filter}
+            onFilterChange={setFilter}
+        />
         <TodoInput
             onSubmit={onSubmit}
             input={input}
             onInputChange={setInput}
-        />
-        <TodoVisibility
-            filter={filter}
-            onFilterChange={setFilter}
         />
         <TodoList
             todos={filteredTodos}

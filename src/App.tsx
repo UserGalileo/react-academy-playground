@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { TodoListDemo } from './pages/TodoListDemo';
+import React, { useEffect, useState } from 'react';
+import { UsersDemo } from './pages/UsersDemo';
 
 export function App() {
 
   return <>
-    <TodoListDemo />
+    <UsersDemo />
   </>
 }
